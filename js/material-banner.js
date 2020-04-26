@@ -8,6 +8,11 @@ template.innerHTML = `
     flex-wrap: wrap; 
     padding-top: 1.5rem;
     background-color: white;
+    transform: translateY(0);
+    transition: transform 0.3s;
+  }
+  .mat-ban-container.end-state{
+    transform: translateY(-100%);
   }
   
   .mat-ban-top{
@@ -89,11 +94,13 @@ static get observedAttributes(){
     }
 
     _hide(){
+      this.shadowRoot.querySelector('.mat-ban-container').classList.add('end-state');
         this.hidden = true
     }
 
     _show(){
         this.hidden = false
+        this.shadowRoot.querySelector('.mat-ban-container').classList.remove('end-state');
     }
 }
 
