@@ -8,11 +8,6 @@ template.innerHTML = `
     flex-wrap: wrap; 
     padding-top: 1.5rem;
     background-color: white;
-    transform: translateY(0);
-    transition: transform 0.3s;
-  }
-  .mat-ban-container.end-state{
-    transform: translateY(-100%);
   }
   
   .mat-ban-top{
@@ -41,7 +36,19 @@ template.innerHTML = `
     height: 1px;
     width: 100%;
   }
+
+.slideup, .slidedown {
+  max-height: 0;            
+  overflow-y: hidden;
+  transition: max-height 0.5s ease-in-out;
+}
+
+.slidedown {            
+  max-height: 100% ;                    
+}   
+
 </style>
+<div id="mat-slider" class="slideup">
 <div class="mat-ban-container">
   <div class="mat-ban-top">
     <slot name="icon"></slot>
@@ -51,6 +58,7 @@ template.innerHTML = `
     <slot name="buttons"></slot>
   </div>
   <div class="mat-ban-divider"></div>
+</div>
 </div>
 `;
 class MaterialBanner extends HTMLElement {
@@ -94,13 +102,13 @@ static get observedAttributes(){
     }
 
     _hide(){
-      this.shadowRoot.querySelector('.mat-ban-container').classList.add('end-state');
-        this.hidden = true
+      this.shadowRoot.getElementById("mat-slider").classList.remove("slidedown")
+      this.shadowRoot.getElementById("mat-slider").classList.add("slideup")
     }
 
     _show(){
-        this.hidden = false
-        this.shadowRoot.querySelector('.mat-ban-container').classList.remove('end-state');
+       this.shadowRoot.getElementById("mat-slider").classList.remove("slideup")
+       this.shadowRoot.getElementById("mat-slider").classList.add("slidedown")
     }
 }
 
