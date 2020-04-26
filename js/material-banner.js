@@ -38,23 +38,14 @@ template.innerHTML = `
   }
 </style>
 <div class="mat-ban-container">
-<div class="mat-ban-top">
-<span style="margin-right: 1rem;">
-    <slot name="icon">
-    
-    </slot></span>
-
+  <div class="mat-ban-top">
+    <slot name="icon"></slot>
     <slot style="margin-right: 1em;"></slot>
-</div>
-
-<div class="mat-ban-btns">
-<slot name="buttons">
-    <!-- place buttons here-->
-
-    </slot>
-</div>
-
-<div class="mat-ban-divider"></div>
+  </div>
+  <div class="mat-ban-btns">
+    <slot name="buttons"></slot>
+  </div>
+  <div class="mat-ban-divider"></div>
 </div>
 `;
 class MaterialBanner extends HTMLElement {
