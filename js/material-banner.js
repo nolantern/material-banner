@@ -17,6 +17,10 @@ template.innerHTML = `
     margin-inline-end: 1rem;
     margin-bottom: 1rem;
   }
+  .mat-ban-icon{
+    padding: 0.5rem;
+    margin-right: 1rem;
+  }
   .mat-ban-btns{
     display: inline-flex;
     justify-content: flex-end;
@@ -51,7 +55,9 @@ template.innerHTML = `
 <div id="mat-slider" class="slideup">
 <div class="mat-ban-container">
   <div class="mat-ban-top">
-    <slot name="icon"></slot>
+    <div class="mat-ban-icon">
+      <slot name="icon"></slot>
+    </div>
     <slot style="margin-right: 1em;"></slot>
   </div>
   <div class="mat-ban-btns">
